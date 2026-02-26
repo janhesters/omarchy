@@ -18,9 +18,27 @@ git checkout feat/keyboard-layout-setup-script
 This will:
 1. Install the `omarchy-keyboard-select` utility
 2. Patch the Omarchy menu to add a Keyboard option under Update (Super+Alt+Space → Update → Keyboard)
-3. Launch the keyboard selector so you can pick your layout immediately
+3. Add a keyboard layout indicator to waybar (shows your active layout, click to cycle, right-click to open the selector)
+4. Restart waybar to apply the changes
+5. Launch the keyboard selector so you can pick your layout immediately
 
 You can delete the cloned repo afterwards — the changes are applied to your live Omarchy install.
+
+### Switching Between Multiple Layouts
+
+To toggle between layouts (e.g. US and French) as [described in the FAQ](https://learn.omacom.io/2/the-omarchy-manual/67/faq):
+
+1. Edit `~/.config/hypr/input.conf` and set multiple layouts:
+   ```
+   input {
+     kb_layout = us,fr
+     kb_options = compose:caps,grp:alts_toggle
+   }
+   ```
+2. Toggle with **Left Alt + Right Alt**, or click the layout indicator in waybar
+3. The waybar indicator updates automatically to show the active layout
+
+If you already have multiple layouts configured when you run the setup script, it will automatically enable `grp:alts_toggle` for you.
 
 ## License
 
